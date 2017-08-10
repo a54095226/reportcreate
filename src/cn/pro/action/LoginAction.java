@@ -26,7 +26,7 @@ public class LoginAction extends ActionSupport {
 
 	// all struts logic here
 	public String add() {
-		System.out.println("跳转到另一个action");
+		System.out.println("跳转到另一个action1");
        System.out.println(user.getName());
 		return SUCCESS;
 
