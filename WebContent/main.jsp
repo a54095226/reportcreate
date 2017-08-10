@@ -6,17 +6,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>main</title>
 <link rel="stylesheet" href="css/bootstrap.min.css" />
-<link rel="stylesheet" href="css/dashboard.css" >
 </head>
-<script src="js/bootstrap.min.js" ></script>
-<script src="js/jquery-3.2.1.min.js"></script>
+
 
 <body>
-    <%@include file="top.jsp"%>
-    <%@include file="left.jsp"%>
+<button class="btn btn-danger">system</button>
   
         
-   
-    
+ <script src="js/jquery.min.js"></script> 
+<script src="js/bootstrap.min.js" ></script>
+
 </body>
 </html>
