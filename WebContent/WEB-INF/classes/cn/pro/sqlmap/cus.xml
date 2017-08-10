@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 为这个mapper指定一个唯一的namespace，namespace的值习惯上设置成包名+sql映射文件名，这样就能够保证namespace的值是唯一的
+ 例如namespace="me.gacl.mapping.userMapper"就是me.gacl.mapping(包名)+userMapper(userMapper.xml文件去除后缀)
+  -->
+ <mapper namespace="cus">
+    <select id="getCus" parameterType="String" 
+         resultType="cn.pro.model.Customer">
+        select * from custable where id=#{id}
+     </select>
+     <insert id="insertCus" parameterType="cn.pro.model.Customer">
+     insert into custable(id,cid,name)  
+             values(#{id},#{cid},#{name})  <!--  id cid name 对应类的属性 -->
+     </insert>
+     <update id="updateCus" parameterType="cn.pro.model.Customer">
+     update custable set cid=#{cid},name = #{name} where id = #{id}
+     </update>
+     <resultMap type="cn.pro.model.Customer" id="listCus">
+     <id column="id" property="id"/>
+     <result column="cid" property="cid"/>
+     <result column="name" property="name"/>
+     </resultMap>
+     <select id="getallCus" resultMap="listCus">
+     select * from custable
+     </select>
+     
+    <insert id="insertlog" parameterType="String">
+     insert into test(log)  
+             values(#{name})  <!--  id cid name 对应类的属性 -->
+     </insert>
+ </mapper>

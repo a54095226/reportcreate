@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>reportcreate</display-name>
+  <welcome-file-list>
+    <welcome-file>main.jsp</welcome-file>
+  </welcome-file-list>
+  <jsp-config>
+   <taglib>
+        <taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+        <taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+    </taglib>
+   </jsp-config> 
+  
+  
+	  <filter>
+  	<filter-name>struts2</filter-name>
+  	<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  	
+  	
+  	<!-- 默认struts.xml配置文件在src根目录下，要修改配置文件位置需要定义web.xml文件中初始化struts 时的Config的值
+我们将默认路径修改为cn/pro/config。所以struts-default.xml以及struts-plugin.xml都会默认在config这个路径中加载。
+但是这两个文件其实是在没修改路径前的默认路径下的。所以有两种办法来加载这两个默认配置文件。否则项目会无法运行。
+ -->
+     <init-param>  
+        <param-name>config</param-name>  
+        <param-value>struts-default.xml,struts-plugin.xml,cn/pro/config/struts.xml</param-value>  
+    </init-param>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>struts2</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+  	<filter-name>test1</filter-name>
+  	<filter-class>cn.pro.filter.TestFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>test1</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+    <filter>
+  	<filter-name>test2</filter-name>
+  	<filter-class>cn.pro.filter.TestFilter2</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>test2</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <listener>
+    <listener-class>
+          org.springframework.web.context.ContextLoaderListener
+    </listener-class>
+    </listener>
+    <context-param>
+     <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:cn/pro/config/myApplicationContext.xml</param-value>
+    </context-param>
+  
+</web-app>

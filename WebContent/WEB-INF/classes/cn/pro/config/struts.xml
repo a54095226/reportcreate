@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+<!-- 默认struts.xml配置文件在src根目录下，要修改配置文件位置需要定义web.xml文件中初始化struts 时的Config的值
+我们将默认路径修改为cn/pro/config。所以struts-default.xml以及struts-plugin.xml都会默认在config这个路径中加载。
+但是这两个文件其实是在没修改路径前的默认路径下的。所以有两种办法来加载这两个默认配置文件。否则项目会无法运行。
+ -->
+	<package name="user" namespace="/user" extends="struts-default">
+		<action name="login" class="cn.pro.action.LoginAction" method="add">
+			<result name="success">/welcome.jsp</result>
+		</action>
+		<action name="user*" class="cn.pro.action.UserAction" method="{1}">   
+		
+		<!-- 
+		通配符配置action {1} 代表第一个*号的内容，所以当访问action useradd时候
+		{1} 其实就等于add，所以执行的是add方法，返回的是useradd.jsp页面
+		
+		可以配置很多*号，每个*号对应一个{数值}
+		-->
+			<result name="success" type="chain">login</result>
+		</action>
+	</package>
+</struts> 
